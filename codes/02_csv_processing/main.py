@@ -46,21 +46,23 @@ result_dict = {"Height": heights_metric,
                "BMI": calculated_bmis}
 
 # 2- Convert dictionary to Pandas DataFrame
-df = pd.DataFrame(result_dict)
-print(df.describe())
+df_out = pd.DataFrame(result_dict)
+print(df_out.describe())
 
 # Report for Pandas Series
-bmis = df['BMI']
+bmis = df_out['BMI']
 print(f'\033[32m BMI max: \033[36m {bmis.max()} \033[0m')
 print(f'\033[32m BMI min: \033[36m {bmis.min()} \033[0m')
 print(f'\033[32m BMI average: \033[36m {bmis.mean():0.2f} \033[0m')
 
 
 # 3- Save to file
-if not os.path.exists('results'):
-    os.mkdir('results')
+out_path = 'results/test1'
+if not os.path.exists(out_path):
+    os.makedirs(out_path)
 
-df.to_csv("results/bmi_table.csv")
-df.to_excel("results/bmi_table.xlsx")
-df.to_json("results/bmi_table.json", indent=4)
-df.to_html("results/bmi_table.html")
+df_out.to_excel(f'{out_path}/result.xlsx')
+df_out.to_csv(f'{out_path}/result.csv')
+df_out.to_html(f'{out_path}/result.html')
+df_out.to_json(f'{out_path}/result.json', indent=4)
+
