@@ -8,7 +8,7 @@ os.system('cls')
 # %% Part 1 - Load Data
 
 # Read Data
-data = pd.read_csv("hw_200.csv")
+data = pd.read_csv("data/hw_200.csv")
 
 # Get Columns
 # Method 1

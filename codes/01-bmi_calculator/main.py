@@ -16,7 +16,7 @@ w = input("Please enter your weight (in kg): ")
 h = input("Please enter your height (in cm): ")
 
 # Error handling (check if input is digit)
-if w.replace(".", " ").isdigit() and h.replace(".", " ").isdigit():
+if w.replace(".", "").isdigit() and h.replace(".", "").isdigit():
     w = float(w)
     h = float(h)
     h /= 100  # h = h/100
