@@ -1,5 +1,5 @@
 
-print('''
+print(r'''
 ooo        ooooo                  oooooooooo.  ooo        ooooo ooooo
 `88.       .888'                  `888'   `Y8b `88.       .888' `888'
  888b     d'888  oooo    ooo       888     888  888b     d'888   888
@@ -11,9 +11,9 @@ o8o        o888o     .8'          o888bood8P'  o8o        o888o o888o
                  `Y8P'
                                                   ''')
                                                   
-print('''
+print(r'''
                                                                              
- __  __   ___                           /|         __  __   ___   .--. 
+ __  __   ___                           /|         __  __   ___   .--\ 
 |  |/  `.'   `..-.          .-          ||        |  |/  `.'   `. |__| 
 |   .-.  .-.   '\ \        / /          ||        |   .-.  .-.   '.--. 
 |  |  |  |  |  | \ \      / /           ||  __    |  |  |  |  |  ||  | 
@@ -41,7 +41,8 @@ if w.replace(".", "").isdigit() and h.replace(".", "").isdigit():
     bmi = round(bmi, 1)
 
     # Gozaresh be karbar
-    print(f"Your BMI is: {bmi} kg/m^2 because your weight is {w} and your height is {h*100}")
+    print(f"Your BMI is: {bmi} kg/m^2 because your weight is {w} \
+          and your height is {h*100}")
 
     # Tamrin2: Classhaye chaaghi ra ham be sharthaaye zir ezafe konid
     if bmi < 18.5:
