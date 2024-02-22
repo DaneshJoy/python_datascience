@@ -9,7 +9,7 @@ os.system('cls')
 
 # Read Data
 data = pd.read_csv("data/hw_200.csv")
-data = pd.read_csv("data/hw_200.xlsx")  # -> requires oprnpyxl
+data = pd.read_csv("data/hw_200.xlsx")  # -> requires openpyxl
 
 # Get Columns
 # Method 1
