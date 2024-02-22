@@ -9,6 +9,7 @@ os.system('cls')
 
 # Read Data
 data = pd.read_csv("data/hw_200.csv")
+data = pd.read_csv("data/hw_200.xlsx")  # -> requires oprnpyxl
 
 # Get Columns
 # Method 1
@@ -26,15 +27,24 @@ heights_metric = heights * 2.54
 weights_metric = weights / 2.205
 
 # Calculate BMI
-calculated_bmis = []
-# Method 1
-for i in range(len(heights_metric)):
-    bmi = calculate_bmi(heights_metric[i], weights_metric[i])
-    calculated_bmis.append(bmi)
+
+# bmis = []
+# # Method 1
+# for i, h in enumerate(heights_metric):
+#     bmi = calculate_bmi(h, weights_metric[i])
+#     bmis.append(bmi)
+
+# # Method 2
+# for i in range(len(heights_metric)):
+#     bmi = calculate_bmi(heights_metric[i], weights_metric[i])
+#     bmis.append(bmi)
 
 # # Method 2
 # for hh, ww in zip(heights_metric, weights_metric):
-#     calculated_bmis.append(calculate_bmi(hh, ww))
+#     bmis.append(calculate_bmi(hh, ww))
+
+# # Method 3
+bmis = weights_metric / (heights_metric ** 2)
 
 # %% Save Results
 heights_metric = [round(i, 1) for i in heights_metric]
@@ -43,7 +53,7 @@ weights_metric = [round(i, 1) for i in weights_metric]
 # 1- Convert lists to dictionary
 result_dict = {"Height": heights_metric,
                "Weight": weights_metric,
-               "BMI": calculated_bmis}
+               "BMI": bmis}
 
 # 2- Convert dictionary to Pandas DataFrame
 df_out = pd.DataFrame(result_dict)
