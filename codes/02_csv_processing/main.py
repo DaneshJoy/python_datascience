@@ -8,8 +8,8 @@ os.system('cls')
 # %% Part 1 - Load Data
 
 # Read Data
-data = pd.read_csv("data/hw_200.csv")
-data = pd.read_csv("data/hw_200.xlsx")  # -> requires openpyxl
+data = pd.read_csv("hw_200.csv")
+# data = pd.read_csv("hw_200.xlsx")  # -> requires openpyxl
 
 # Get Columns
 # Method 1
@@ -64,7 +64,6 @@ bmis = df_out['BMI']
 print(f'\033[32m BMI max: \033[36m {bmis.max()} \033[0m')
 print(f'\033[32m BMI min: \033[36m {bmis.min()} \033[0m')
 print(f'\033[32m BMI average: \033[36m {bmis.mean():0.2f} \033[0m')
-
 
 # 3- Save to file
 out_path = 'results/test1'
