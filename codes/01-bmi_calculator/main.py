@@ -41,16 +41,25 @@ if w.replace(".", "").isdigit() and h.replace(".", "").isdigit():
     bmi = round(bmi, 1)
 
     # Gozaresh be karbar
-    print(f"Your BMI is: {bmi} kg/m^2 because your weight is {w} \
-          and your height is {h*100}")
+    print(f"Your BMI is: {bmi} kg/m^2 because your weight is {w}",
+          f"and your height is {h*100}")
 
     # Tamrin2: Classhaye chaaghi ra ham be sharthaaye zir ezafe konid
-    if bmi < 18.5:
-        print("Shoma Underweight Hastid")
-    elif 18.5 <= bmi < 24.9:
-        print("Tabrik, Shoma Normal Hastid")
+    if bmi<18.5:
+        status = 'Underweight'
+        color = '\033[33;1m'
+    elif bmi<=25:
+        status = 'Normal'
+        color = '\033[32;1m'
+    elif bmi<=30:
+        status = 'Overweight'
+        color = '\033[35;1m'
     else:
-        print("Shoma Chagh Hastid")
+        status = 'Obese'
+        color = '\033[31;1m'
+    
+    print(f'Your bmi is {color}{bmi:.2f}\033[0m and your',
+          f'status is: {color}{status} \033[0m')
 
     # Tamrin3: Meghdaare ezafe ya kamboode vazn ra ham gozaresh dahid
 
