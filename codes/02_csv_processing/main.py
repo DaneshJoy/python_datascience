@@ -2,13 +2,10 @@ import os
 import pandas as pd
 from utils import calculate_bmi
 
-# Should run this line for colors to work in CMD
-os.system('cls')
-
 # %% Part 1 - Load Data
 
 # Read Data
-data = pd.read_csv("hw_200.csv")
+data = pd.read_csv("hw_200.csv", index_col=0)
 # data = pd.read_csv("hw_200.xlsx")  # -> requires openpyxl
 
 # Get Columns
@@ -39,21 +36,21 @@ weights_metric = weights / 2.205
 #     bmi = calculate_bmi(heights_metric[i], weights_metric[i])
 #     bmis.append(bmi)
 
-# # Method 2
+# # Method 3
 # for hh, ww in zip(heights_metric, weights_metric):
 #     bmis.append(calculate_bmi(hh, ww))
 
-# # Method 3
-bmis = weights_metric / (heights_metric ** 2)
+# # Method 4
+bmis = weights_metric / ((heights_metric/100) ** 2)
 
 # %% Save Results
 heights_metric = [round(i, 1) for i in heights_metric]
 weights_metric = [round(i, 1) for i in weights_metric]
 
 # 1- Convert lists to dictionary
-result_dict = {"Height": heights_metric,
-               "Weight": weights_metric,
-               "BMI": bmis}
+result_dict = {"Height": round(heights_metric, 2),
+               "Weight": round(weights_metric, 2),
+               "BMI": round(bmis, 2)}
 
 # 2- Convert dictionary to Pandas DataFrame
 df_out = pd.DataFrame(result_dict)
