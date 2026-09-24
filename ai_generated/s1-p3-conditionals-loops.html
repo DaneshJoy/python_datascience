@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جلسه ۱ · بخش ۳ — شرط‌ها، حلقه‌ها و پروژه‌ی BMI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+<defs>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.7A8.3 8.3 0 1 1 9.3 3.8a6.7 6.7 0 0 0 10.9 10.9z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.8 9 17.3 19.5 6.8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+</defs>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="brand-mark">&gt;_</span><span>پایتون برای علم داده</span></div>
+    <div class="topbar-meta">
+      <span class="pill">جلسه ۱</span>
+      <span class="pill pill-accent">بخش ۳ از ۹</span>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="تغییر تم روشن و تیره">
+      <svg class="icon icon-sun"><use href="#i-sun"></use></svg>
+      <svg class="icon icon-moon"><use href="#i-moon"></use></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">دوره‌ی مقدماتی پایتون برای علم داده</p>
+    <h1>شرط‌ها، حلقه‌ها و تکمیل پروژه‌ی BMI</h1>
+    <p class="hero-sub">در بخش قبل متغیرها و عملگرها را یاد گرفتیم؛ در این بخش با شرط‌ها و حلقه‌ها تصمیم‌گیری و تکرار را به کدمان اضافه می‌کنیم و پروژه‌ی BMI را کامل می‌کنیم.</p>
+    <div class="hero-meta">
+      <span class="chip">⏱ حدود ۶۰ دقیقه</span>
+      <span class="chip">✅ تکمیل پروژه BMI</span>
+    </div>
+
+    <div class="cell code-cell hero-cell" data-animate>
+      <div class="cell-head"><span class="cell-tag">In [1]:</span></div>
+      <pre class="code">score = 78
+
+if score >= 90:
+    grade = "A"
+elif score >= 70:
+    grade = "B"
+else:
+    grade = "C"
+
+print(f"نمره‌ی نهایی: {grade}")</pre>
+      <div class="cell-out" hidden>
+        <span class="cell-tag">Out[1]:</span>
+        <pre>نمره‌ی نهایی: B</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>دستورات شرطی</h2>
+    <p>با <code>if</code> می‌توان بر اساس درست یا نادرست بودن یک شرط، مسیر اجرای برنامه را تغییر داد. هر <code>if</code> می‌تواند چند <code>elif</code> و در پایان تنها یک <code>else</code> داشته باشد. نکته‌ی مهم: دستورهای داخل هر شرط باید دقیقاً به اندازه‌ی ۴ فاصله (یا یک Tab) از ابتدای خط فاصله داشته باشند — این تورفتگی در پایتون اجباری است، نه فقط برای زیبایی.</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [2]:</span></div>
+      <pre class="code">if condition1:
+    # این خط اجرا می‌شود
+elif condition2:
+    # یا این خط
+else:
+    # یا این خط</pre>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>تکمیل پروژه: دسته‌بندی وضعیت BMI</h2>
+    <p>حالا که <code>if</code> و <code>elif</code> را داریم، می‌توانیم بر اساس عدد BMI محاسبه‌شده، وضعیت فرد را هم مشخص کنیم:</p>
+    <div class="table-wrap">
+      <table class="dtable">
+        <thead><tr><th>بازه‌ی BMI</th><th>وضعیت</th></tr></thead>
+        <tbody>
+          <tr><td>کمتر از ۱۸.۵</td><td>کمبود وزن</td></tr>
+          <tr><td>۱۸.۵ تا ۲۴.۹</td><td>طبیعی</td></tr>
+          <tr><td>۲۵ تا ۲۹.۹</td><td>اضافه‌وزن</td></tr>
+          <tr><td>۳۰ تا ۳۴.۹</td><td>چاقی درجه‌ی ۱</td></tr>
+          <tr><td>۳۵ تا ۳۹.۹</td><td>چاقی درجه‌ی ۲</td></tr>
+          <tr><td>بیشتر از ۴۰</td><td>چاقی درجه‌ی ۳</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cell code-cell" style="margin-top:20px">
+      <div class="cell-head"><span class="cell-tag">In [3]:</span></div>
+      <pre class="code">weight = 68
+height = 1.72
+bmi = weight / height ** 2
+
+if bmi < 18.5:
+    status = "کمبود وزن"
+elif bmi < 25:
+    status = "طبیعی"
+elif bmi < 30:
+    status = "اضافه‌وزن"
+else:
+    status = "چاق"
+
+print(f"BMI شما: {bmi:.2f} → {status}")</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[3]:</span>
+        <pre>BMI شما: 22.99 → طبیعی</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>حلقه‌ی for</h2>
+    <p>حلقه‌ی <code>for</code> روی آیتم‌های یک مجموعه (مثل لیست) حرکت می‌کند و برای هرکدام، دستورهای داخل حلقه را اجرا می‌کند.</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [4]:</span></div>
+      <pre class="code">languages = ["Python", "C#", "Rust", "Dart"]
+
+for lang in languages:
+    print(f"من عاشق {lang} هستم! ❤️")</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[4]:</span>
+        <pre>من عاشق Python هستم! ❤️
+من عاشق C# هستم! ❤️
+من عاشق Rust هستم! ❤️
+من عاشق Dart هستم! ❤️</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>range و enumerate</h2>
+    <p><code>range(start, stop, step)</code> دنباله‌ای از اعداد می‌سازد؛ و اگر هم به مقدار و هم به شماره‌ی هر آیتم نیاز داشته باشید، <code>enumerate</code> کار را راحت می‌کند.</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [5]:</span></div>
+      <pre class="code">for i, lang in enumerate(languages, start=1):
+    print(i, lang)</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[5]:</span>
+        <pre>1 Python
+2 C#
+3 Rust
+4 Dart</pre>
+      </div>
+    </div>
+    <aside class="note">💡 نکته‌ی جلوتر: <code>[n**2 for n in range(1, 6)]</code> همین حلقه را در یک خط می‌نویسد و <code>[1, 4, 9, 16, 25]</code> می‌سازد — به آن List Comprehension می‌گویند و در جلسه‌ی بعد بیشتر می‌بینیمش.</aside>
+  </section>
+
+  <section class="prose">
+    <h2>حلقه‌ی while</h2>
+    <p>وقتی از قبل نمی‌دانیم حلقه چند بار تکرار می‌شود و فقط یک شرط توقف داریم، از <code>while</code> استفاده می‌کنیم.</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [6]:</span></div>
+      <pre class="code">count = 3
+while count > 0:
+    print("شمارش معکوس:", count)
+    count -= 1
+print("🚀 پرتاب!")</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[6]:</span>
+        <pre>شمارش معکوس: 3
+شمارش معکوس: 2
+شمارش معکوس: 1
+🚀 پرتاب!</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrapup">
+    <h2>جمع‌بندی این بخش</h2>
+    <ul class="recap">
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>دستورات شرطی if / elif / else را یاد گرفتیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>با حلقه‌های for و while داده‌ها را تکرار کردیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>پروژه‌ی BMI را با دسته‌بندی وضعیت کامل کردیم</li>
+    </ul>
+    <span class="end-badge">🎉 پایان جلسه‌ی ۱</span>
+    <div class="next-box" style="margin-top:20px">
+      <p class="next-label">بخش بعد — شروع جلسه‌ی ۲</p>
+      <h3>لیست‌ها، دیکشنری‌ها و توابع</h3>
+      <ul>
+        <li>ساختارهای داده: List، Tuple، Set و Dict</li>
+        <li>نوشتن تابع و اصل DRY</li>
+        <li>دامنه‌ی متغیرها (Local و Global)</li>
+      </ul>
+    </div>
+    <div class="nav-buttons">
+      <a class="btn" href="s1-p2-variables-types.html"><svg class="icon icon-flip"><use href="#i-arrow"></use></svg> بخش قبل</a>
+      <a class="btn btn-primary" href="s2-p1-collections-functions.html">بخش بعد <svg class="icon"><use href="#i-arrow"></use></svg></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="progress-dots">
+    <span class="done"></span><span class="done"></span><span class="done"></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <p>پایتون برای علم داده · جلسه ۱ از ۳ · بخش ۳ از ۹</p>
+</footer>
+
+</body>
+</html>

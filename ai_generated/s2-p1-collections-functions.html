@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جلسه ۲ · بخش ۱ — لیست‌ها، دیکشنری‌ها و توابع</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+<defs>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.7A8.3 8.3 0 1 1 9.3 3.8a6.7 6.7 0 0 0 10.9 10.9z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.8 9 17.3 19.5 6.8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+</defs>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="brand-mark">&gt;_</span><span>پایتون برای علم داده</span></div>
+    <div class="topbar-meta">
+      <span class="pill">جلسه ۲</span>
+      <span class="pill pill-accent">بخش ۴ از ۹</span>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="تغییر تم روشن و تیره">
+      <svg class="icon icon-sun"><use href="#i-sun"></use></svg>
+      <svg class="icon icon-moon"><use href="#i-moon"></use></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">دوره‌ی مقدماتی پایتون برای علم داده</p>
+    <h1>لیست‌ها، دیکشنری‌ها و توابع</h1>
+    <p class="hero-sub">جلسه‌ی اول را با موفقیت تمام کردیم 🎉 حالا با ساختارهای داده‌ی پایتون — که پایه‌ی کار با جدول‌های واقعی در NumPy و Pandas هستند — و نوشتن تابع آشنا می‌شویم.</p>
+    <div class="hero-meta">
+      <span class="chip">⏱ حدود ۶۰ دقیقه</span>
+      <span class="chip">🧰 ساختار داده و توابع</span>
+    </div>
+
+    <div class="cell code-cell hero-cell" data-animate>
+      <div class="cell-head"><span class="cell-tag">In [1]:</span></div>
+      <pre class="code">student = {"نام": "مریم", "نمره": 19}
+
+print(f"{student['نام']} نمره‌ی {student['نمره']} گرفت 🎉")</pre>
+      <div class="cell-out" hidden>
+        <span class="cell-tag">Out[1]:</span>
+        <pre>مریم نمره‌ی 19 گرفت 🎉</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>چرا به ساختار داده نیاز داریم؟</h2>
+    <p>فرض کنید می‌خواهید BMI را نه برای یک نفر، بلکه برای ۱۰۰ نفر حساب کنید. نوشتن ۱۰۰ متغیر جداگانه عملی نیست. پایتون چهار ساختار آماده دارد که داده‌های زیاد را منظم نگه می‌دارند: <strong>List</strong>، <strong>Tuple</strong>، <strong>Set</strong> و <strong>Dict</strong>.</p>
+  </section>
+
+  <section class="prose">
+    <h2>لیست (List) — مرتب و قابل تغییر</h2>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [2]:</span></div>
+      <pre class="code">fruits = ["سیب", "موز", "پرتقال"]
+fruits.append("انگور")
+print(fruits[0], "—", len(fruits), "میوه")</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[2]:</span>
+        <pre>سیب — 4 میوه</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>تاپل (Tuple) — مرتب و غیرقابل تغییر</h2>
+    <p>تاپل مثل لیست است، با این تفاوت که بعد از ساخت، دیگر نمی‌توان مقادیرش را تغییر داد — مناسب برای داده‌هایی مثل مختصات جغرافیایی که نباید عوض شوند.</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [3]:</span></div>
+      <pre class="code">location = (35.70, 51.42)
+print(f"عرض: {location[0]} — طول: {location[1]}")</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[3]:</span>
+        <pre>عرض: 35.7 — طول: 51.42</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>مجموعه (Set) — بدون تکرار</h2>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [4]:</span></div>
+      <pre class="code">colors = {"قرمز", "آبی", "قرمز", "سبز"}
+print(colors)</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[4]:</span>
+        <pre>{'قرمز', 'آبی', 'سبز'}</pre>
+      </div>
+    </div>
+    <p style="margin-top:14px">مقدار تکراری «قرمز» به‌خودی‌خود حذف شد — این ویژگی کلیدی Set است.</p>
+  </section>
+
+  <section class="prose">
+    <h2>دیکشنری (Dict) — جفت کلید و مقدار</h2>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [5]:</span></div>
+      <pre class="code">student = {"نام": "مریم", "نمره": 19, "رشته": "کامپیوتر"}
+for key, value in student.items():
+    print(key, ":", value)</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[5]:</span>
+        <pre>نام : مریم
+نمره : 19
+رشته : کامپیوتر</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>مقایسه‌ی سریع</h2>
+    <div class="table-wrap">
+      <table class="dtable">
+        <thead><tr><th>ساختار</th><th>نماد</th><th>ترتیب دارد</th><th>قابل تغییر</th><th>مقدار تکراری</th></tr></thead>
+        <tbody>
+          <tr><td>List</td><td>[ ]</td><td><span class="mark-ok">✓</span></td><td><span class="mark-ok">✓</span></td><td><span class="mark-ok">✓</span></td></tr>
+          <tr><td>Tuple</td><td>( )</td><td><span class="mark-ok">✓</span></td><td><span class="mark-no">✗</span></td><td><span class="mark-ok">✓</span></td></tr>
+          <tr><td>Set</td><td>{ }</td><td><span class="mark-no">✗</span></td><td><span class="mark-ok">✓</span></td><td><span class="mark-no">✗</span></td></tr>
+          <tr><td>Dict</td><td>{key: value}</td><td><span class="mark-ok">✓</span></td><td><span class="mark-ok">✓</span></td><td>کلید: ✗</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>چرا تابع؟</h2>
+    <p>هر وقت یک بخش از کد بیش از یک‌بار تکرار می‌شود، جای تابع است — این اصل را <strong>DRY</strong> (Don't Repeat Yourself) می‌نامند. تابع همان کد را یک‌بار می‌نویسد و هر جا لازم شد، صدایش می‌زنیم.</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [6]:</span></div>
+      <pre class="code">def greet(name):
+    """پیام خوش‌آمدگویی می‌سازد"""
+    return f"سلام {name}! خوش اومدی 👋"
+
+print(greet("سارا"))
+print(greet("امیر"))</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[6]:</span>
+        <pre>سلام سارا! خوش اومدی 👋
+سلام امیر! خوش اومدی 👋</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>دامنه‌ی متغیرها: Local و Global</h2>
+    <p>متغیری که داخل یک تابع تعریف می‌شود، <strong>Local</strong> است و فقط همان‌جا معتبر است؛ متغیری که بیرون از هر تابع تعریف شود، <strong>Global</strong> است و در کل برنامه در دسترس است.</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [7]:</span></div>
+      <pre class="code">x = 10
+
+def show():
+    x = 20
+    print("داخل تابع:", x)
+
+show()
+print("بیرون از تابع:", x)</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[7]:</span>
+        <pre>داخل تابع: 20
+بیرون از تابع: 10</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrapup">
+    <h2>جمع‌بندی این بخش</h2>
+    <ul class="recap">
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>چهار ساختار داده‌ی List، Tuple، Set و Dict را شناختیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>تفاوت‌های کلیدی آن‌ها را در یک جدول مقایسه کردیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>یاد گرفتیم چرا و چطور تابع بنویسیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>با دامنه‌ی Local و Global متغیرها آشنا شدیم</li>
+    </ul>
+    <div class="next-box">
+      <p class="next-label">بخش بعد</p>
+      <h3>نصب کتابخانه‌ها و آشنایی با NumPy</h3>
+      <ul>
+        <li>نصب کتابخانه با pip و conda</li>
+        <li>آرایه‌های NumPy</li>
+        <li>محاسبات برداری سریع‌تر از لیست معمولی</li>
+      </ul>
+    </div>
+    <div class="nav-buttons">
+      <a class="btn" href="s1-p3-conditionals-loops.html"><svg class="icon icon-flip"><use href="#i-arrow"></use></svg> بخش قبل</a>
+      <a class="btn btn-primary" href="s2-p2-packages-numpy.html">بخش بعد <svg class="icon"><use href="#i-arrow"></use></svg></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="progress-dots">
+    <span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <p>پایتون برای علم داده · جلسه ۲ از ۳ · بخش ۴ از ۹</p>
+</footer>
+
+</body>
+</html>

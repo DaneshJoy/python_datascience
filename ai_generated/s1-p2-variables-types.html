@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جلسه ۱ · بخش ۲ — متغیرها، انواع داده و عملگرها</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+<defs>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.7A8.3 8.3 0 1 1 9.3 3.8a6.7 6.7 0 0 0 10.9 10.9z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.8 9 17.3 19.5 6.8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+</defs>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="brand-mark">&gt;_</span><span>پایتون برای علم داده</span></div>
+    <div class="topbar-meta">
+      <span class="pill">جلسه ۱</span>
+      <span class="pill pill-accent">بخش ۲ از ۹</span>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="تغییر تم روشن و تیره">
+      <svg class="icon icon-sun"><use href="#i-sun"></use></svg>
+      <svg class="icon icon-moon"><use href="#i-moon"></use></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">دوره‌ی مقدماتی پایتون برای علم داده</p>
+    <h1>متغیرها، انواع داده و عملگرها</h1>
+    <p class="hero-sub">در بخش قبل با پایتون و محیط‌های کدنویسی آشنا شدیم؛ حالا وقتشه با متغیرها، انواع داده و عملگرها دست‌مان را کثیف کنیم و اولین قدم پروژه‌ی BMI را برداریم.</p>
+    <div class="hero-meta">
+      <span class="chip">⏱ حدود ۶۰ دقیقه</span>
+      <span class="chip">🧮 عملگرها و انواع داده</span>
+    </div>
+
+    <div class="cell code-cell hero-cell" data-animate>
+      <div class="cell-head"><span class="cell-tag">In [1]:</span></div>
+      <pre class="code">name = "سارا"
+age = 27
+height = 1.65
+is_student = False
+
+print(type(name), type(age))</pre>
+      <div class="cell-out" hidden>
+        <span class="cell-tag">Out[1]:</span>
+        <pre>&lt;class 'str'&gt; &lt;class 'int'&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>متغیرها چیستند؟</h2>
+    <p>متغیر جعبه‌ای است که یک مقدار را با یک نام نگه می‌دارد. هر متغیر در پایتون سه خصوصیت دارد: <strong>نام</strong>، <strong>مقدار</strong> و <strong>نوع</strong> — و نوع آن، برخلاف بسیاری از زبان‌ها، خودکار و بر اساس مقدار تعیین می‌شود.</p>
+    <div class="table-wrap">
+      <table class="dtable">
+        <thead><tr><th>نام (ID)</th><th>مقدار (Value)</th><th>نوع (Type)</th></tr></thead>
+        <tbody>
+          <tr><td>x</td><td>10</td><td>integer</td></tr>
+          <tr><td>y</td><td>1.25</td><td>float</td></tr>
+          <tr><td>firstname</td><td>"saeed"</td><td>string</td></tr>
+          <tr><td>is_ok</td><td>True</td><td>boolean</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>قوانین نام‌گذاری متغیرها</h2>
+    <p>پایتون به حروف بزرگ و کوچک حساس است، تورفتگی (Indentation) در ابتدای خط‌ها مهم است، و نام متغیر فقط می‌تواند شامل حروف، عدد و زیرخط (_) باشد — بدون شروع با عدد.</p>
+    <div class="table-wrap">
+      <table class="dtable">
+        <thead><tr><th>الگو</th><th>مثال</th><th>وضعیت</th></tr></thead>
+        <tbody>
+          <tr><td>snake_case</td><td>var_name</td><td><span class="mark-ok">✓ معتبر</span></td></tr>
+          <tr><td>camelCase</td><td>varName</td><td><span class="mark-ok">✓ معتبر</span></td></tr>
+          <tr><td>PascalCase</td><td>VarName</td><td><span class="mark-ok">✓ معتبر</span></td></tr>
+          <tr><td>شروع با عدد</td><td>2varName</td><td><span class="mark-no">✗ نامعتبر</span></td></tr>
+          <tr><td>نویسه‌ی غیرمجاز</td><td>var$name</td><td><span class="mark-no">✗ نامعتبر</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>انواع داده‌ی پایه</h2>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [2]:</span></div>
+      <pre class="code">age = 25          # int
+price = 12.5      # float
+city = "تهران"     # str
+is_open = True    # bool</pre>
+    </div>
+    <p style="margin-top:16px">پایتون انواع ساختاریافته‌تری هم دارد — لیست، تاپل، مجموعه و دیکشنری — که در جلسه‌ی دوم دوره کامل با آن‌ها کار خواهیم کرد.</p>
+  </section>
+
+  <section class="prose">
+    <h2>رشته‌ها: ایندکس‌گذاری و برش</h2>
+    <p>به هر کاراکتر یک رشته می‌توان با شماره‌اش (از صفر شروع می‌شود) دسترسی داشت؛ همچنین می‌توان بازه‌ای از آن را برش زد.</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [3]:</span></div>
+      <pre class="code">message = "Hello World!"
+print(message[0])
+print(message[0:5])
+print(message[-6:])</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[3]:</span>
+        <pre>H
+Hello
+World!</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>ترکیب رشته‌ها با f-string</h2>
+    <p>برای قراردادن مقدار متغیرها داخل متن، ساده‌ترین و خواناترین روش استفاده از <strong>f-string</strong> است — یک حرف <code>f</code> قبل از رشته، به‌علاوه‌ی نام متغیر داخل آکولاد.</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [4]:</span></div>
+      <pre class="code">name = "علی"
+score = 18.5
+print(f"{name} با نمره‌ی {score} قبول شد ✅")</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[4]:</span>
+        <pre>علی با نمره‌ی 18.5 قبول شد ✅</pre>
+      </div>
+    </div>
+    <aside class="note">💡 برای گرد کردن اعداد اعشاری می‌توانید بنویسید: <code>f"{score:.1f}"</code></aside>
+  </section>
+
+  <section class="prose">
+    <h2>عملگرهای محاسباتی</h2>
+    <div class="table-wrap">
+      <table class="dtable">
+        <thead><tr><th>عملگر</th><th>نام</th><th>مثال</th></tr></thead>
+        <tbody>
+          <tr><td>+</td><td>جمع</td><td>x + 2</td></tr>
+          <tr><td>-</td><td>تفریق</td><td>x - 3</td></tr>
+          <tr><td>*</td><td>ضرب</td><td>x * 3</td></tr>
+          <tr><td>/</td><td>تقسیم</td><td>x / 2</td></tr>
+          <tr><td>**</td><td>توان</td><td>x ** 2</td></tr>
+          <tr><td>%</td><td>باقی‌مانده</td><td>x % 2</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>عملگرهای مقایسه‌ای و منطقی</h2>
+    <div class="table-wrap">
+      <table class="dtable">
+        <thead><tr><th>عملگر</th><th>معنی</th><th>عملگر منطقی</th><th>معنی</th></tr></thead>
+        <tbody>
+          <tr><td>==</td><td>برابر است با</td><td>and</td><td>و</td></tr>
+          <tr><td>!=</td><td>برابر نیست با</td><td>or</td><td>یا</td></tr>
+          <tr><td>&gt; / &lt;</td><td>بزرگ‌تر / کوچک‌تر</td><td>not</td><td>نقیض</td></tr>
+          <tr><td>&gt;= / &lt;=</td><td>بزرگ‌تر یا مساوی / کوچک‌تر یا مساوی</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px">حاصل این عملگرها همیشه یک مقدار بولین است: <code>True</code> یا <code>False</code>.</p>
+  </section>
+
+  <section class="prose">
+    <h2>شروع پروژه: محاسبه‌ی BMI</h2>
+    <p>شاخص توده‌ی بدنی (Body Mass Index) از تقسیم وزن بر مجذور قد به دست می‌آید:</p>
+    <div class="formula">BMI = وزن (kg) ÷ قد² (m²)</div>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [5]:</span></div>
+      <pre class="code">weight = 68     # کیلوگرم
+height = 1.72   # متر
+
+bmi = weight / height ** 2
+print(f"BMI شما: {bmi:.2f}")</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[5]:</span>
+        <pre>BMI شما: 22.99</pre>
+      </div>
+    </div>
+    <aside class="note">🚧 در بخش بعد، بر اساس این عدد، وضعیت فرد (کمبود وزن، طبیعی، اضافه‌وزن، چاق) را هم به پروژه اضافه می‌کنیم.</aside>
+  </section>
+
+  <section class="wrapup">
+    <h2>جمع‌بندی این بخش</h2>
+    <ul class="recap">
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>با مفهوم متغیر و سه‌گانه‌ی نام / مقدار / نوع آشنا شدیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>انواع داده‌ی پایه و قوانین نام‌گذاری را دیدیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>با ایندکس‌گذاری رشته‌ها و f-string کار کردیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>عملگرهای محاسباتی و مقایسه‌ای را یاد گرفتیم و اولین نسخه‌ی پروژه‌ی BMI را نوشتیم</li>
+    </ul>
+    <div class="next-box">
+      <p class="next-label">بخش بعد</p>
+      <h3>شرط‌ها، حلقه‌ها و تکمیل پروژه‌ی BMI</h3>
+      <ul>
+        <li>دستورات شرطی if / elif / else</li>
+        <li>حلقه‌های for و while</li>
+        <li>دسته‌بندی نتیجه‌ی BMI</li>
+      </ul>
+    </div>
+    <div class="nav-buttons">
+      <a class="btn" href="s1-p1-intro-setup.html"><svg class="icon icon-flip"><use href="#i-arrow"></use></svg> بخش قبل</a>
+      <a class="btn btn-primary" href="s1-p3-conditionals-loops.html">بخش بعد <svg class="icon"><use href="#i-arrow"></use></svg></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="progress-dots">
+    <span class="done"></span><span class="done"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <p>پایتون برای علم داده · جلسه ۱ از ۳ · بخش ۲ از ۹</p>
+</footer>
+
+</body>
+</html>

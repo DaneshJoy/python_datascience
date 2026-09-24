@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جلسه ۳ · بخش ۱ — پردازش CSV و پروژه‌ی تحلیل داده</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+<defs>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.7A8.3 8.3 0 1 1 9.3 3.8a6.7 6.7 0 0 0 10.9 10.9z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.8 9 17.3 19.5 6.8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+</defs>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="brand-mark">&gt;_</span><span>پایتون برای علم داده</span></div>
+    <div class="topbar-meta">
+      <span class="pill">جلسه ۳</span>
+      <span class="pill pill-accent">بخش ۷ از ۹</span>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="تغییر تم روشن و تیره">
+      <svg class="icon icon-sun"><use href="#i-sun"></use></svg>
+      <svg class="icon icon-moon"><use href="#i-moon"></use></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">دوره‌ی مقدماتی پایتون برای علم داده</p>
+    <h1>پردازش CSV و پروژه‌ی تحلیل داده</h1>
+    <p class="hero-sub">جلسه‌ی دوم تمام شد 🎉 حالا وقتشه همه‌چیز را کنار هم بگذاریم: یک پروژه‌ی کامل تحلیل داده، از خواندن فایل CSV تا ذخیره‌ی نتیجه‌ی نهایی.</p>
+    <div class="hero-meta">
+      <span class="chip">⏱ حدود ۶۰ دقیقه</span>
+      <span class="chip">📁 پروژه‌ی CSV</span>
+    </div>
+
+    <div class="cell code-cell hero-cell" data-animate>
+      <div class="cell-head"><span class="cell-tag">In [1]:</span></div>
+      <pre class="code">import pandas as pd
+
+df = pd.read_csv("people.csv")
+print(df.head(3))</pre>
+      <div class="cell-out" hidden>
+        <span class="cell-tag">Out[1]:</span>
+        <pre>    name  height_cm  weight_kg
+0    آرش        178         82
+1   نگار        165         58
+2  رامین        172         75</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>هدف پروژه</h2>
+    <p>یک فایل CSV داریم با نام، قد (بر حسب سانتی‌متر) و وزن (بر حسب کیلوگرم) چند نفر. می‌خواهیم برای هرکدام BMI را حساب کنیم، وضعیت‌شان را دسته‌بندی کنیم، و نتیجه را ذخیره کنیم — دقیقاً همان کاری که یک تحلیل‌گر داده‌ی واقعی هر روز انجام می‌دهد.</p>
+  </section>
+
+  <section class="prose">
+    <h2>قدم ۱: خواندن و بررسی داده</h2>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [2]:</span></div>
+      <pre class="code">print(df.shape)
+print(df.describe())</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[2]:</span>
+        <pre>(50, 3)</pre>
+      </div>
+    </div>
+    <p style="margin-top:16px"><code>shape</code> نشان می‌دهد جدول ۵۰ سطر و ۳ ستون دارد؛ <code>describe()</code> هم میانگین، کمینه و بیشینه‌ی ستون‌های عددی را خلاصه می‌کند.</p>
+  </section>
+
+  <section class="prose">
+    <h2>قدم ۲: تبدیل واحد قد</h2>
+    <p>فرمول BMI به متر نیاز دارد، اما داده‌مان بر حسب سانتی‌متر است؛ پس یک ستون جدید می‌سازیم:</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [3]:</span></div>
+      <pre class="code">df["height_m"] = df["height_cm"] / 100</pre>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>قدم ۳: محاسبه‌ی BMI برای همه</h2>
+    <p>نیازی به حلقه نیست — Pandas عملیات را روی کل ستون، یک‌جا انجام می‌دهد:</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [4]:</span></div>
+      <pre class="code">df["bmi"] = df["weight_kg"] / (df["height_m"] ** 2)
+print(df[["name", "bmi"]].head(3))</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[4]:</span>
+        <pre>    name    bmi
+0    آرش  25.88
+1   نگار  21.30
+2  رامین  25.35</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>قدم ۴: دسته‌بندی وضعیت با تابع</h2>
+    <p>همان تابعی که در جلسه‌ی اول نوشتیم را این‌بار روی کل ستون BMI اجرا می‌کنیم — با <code>apply</code>:</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [5]:</span></div>
+      <pre class="code">def bmi_status(bmi):
+    if bmi < 18.5:
+        return "کمبود وزن"
+    elif bmi < 25:
+        return "طبیعی"
+    elif bmi < 30:
+        return "اضافه‌وزن"
+    else:
+        return "چاق"
+
+df["status"] = df["bmi"].apply(bmi_status)
+print(df[["name", "bmi", "status"]].head(3))</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[5]:</span>
+        <pre>    name    bmi     status
+0    آرش  25.88  اضافه‌وزن
+1   نگار  21.30     طبیعی
+2  رامین  25.35  اضافه‌وزن</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>قدم ۵: ذخیره‌ی نتیجه</h2>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [6]:</span></div>
+      <pre class="code">df.to_csv("bmi_results.csv", index=False)
+df.to_excel("bmi_results.xlsx", index=False)</pre>
+    </div>
+    <aside class="note">✅ همین چند خط، یک پروژه‌ی واقعی و کامل تحلیل داده است: خواندن، پردازش، محاسبه و ذخیره.</aside>
+  </section>
+
+  <section class="wrapup">
+    <h2>جمع‌بندی این بخش</h2>
+    <ul class="recap">
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>یک فایل CSV واقعی را با Pandas خواندیم و بررسی کردیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>واحدها را تبدیل و ستون BMI را برای همه محاسبه کردیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>با یک تابع، وضعیت هر فرد را دسته‌بندی کردیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>نتیجه را در چند فرمت مختلف ذخیره کردیم</li>
+    </ul>
+    <div class="next-box">
+      <p class="next-label">بخش بعد</p>
+      <h3>رسم نمودار با Matplotlib</h3>
+      <ul>
+        <li>نمودار خطی و میله‌ای</li>
+        <li>عنوان، برچسب و legend</li>
+        <li>ترکیب Pandas و Matplotlib</li>
+      </ul>
+    </div>
+    <div class="nav-buttons">
+      <a class="btn" href="s2-p3-pandas-basics.html"><svg class="icon icon-flip"><use href="#i-arrow"></use></svg> بخش قبل</a>
+      <a class="btn btn-primary" href="s3-p2-matplotlib.html">بخش بعد <svg class="icon"><use href="#i-arrow"></use></svg></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="progress-dots">
+    <span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span></span><span></span>
+  </div>
+  <p>پایتون برای علم داده · جلسه ۳ از ۳ · بخش ۷ از ۹</p>
+</footer>
+
+</body>
+</html>

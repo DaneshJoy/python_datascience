@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جلسه ۲ · بخش ۲ — نصب کتابخانه‌ها و NumPy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+<defs>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.7A8.3 8.3 0 1 1 9.3 3.8a6.7 6.7 0 0 0 10.9 10.9z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.8 9 17.3 19.5 6.8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+</defs>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="brand-mark">&gt;_</span><span>پایتون برای علم داده</span></div>
+    <div class="topbar-meta">
+      <span class="pill">جلسه ۲</span>
+      <span class="pill pill-accent">بخش ۵ از ۹</span>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="تغییر تم روشن و تیره">
+      <svg class="icon icon-sun"><use href="#i-sun"></use></svg>
+      <svg class="icon icon-moon"><use href="#i-moon"></use></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">دوره‌ی مقدماتی پایتون برای علم داده</p>
+    <h1>نصب کتابخانه‌ها و آشنایی با NumPy</h1>
+    <p class="hero-sub">در بخش قبل با ساختارهای داده و توابع آشنا شدیم؛ حالا یاد می‌گیریم چطور کتابخانه نصب کنیم و با NumPy — پایه‌ی محاسبات عددی در پایتون — کار کنیم.</p>
+    <div class="hero-meta">
+      <span class="chip">⏱ حدود ۶۰ دقیقه</span>
+      <span class="chip">📦 نصب کتابخانه</span>
+    </div>
+
+    <div class="cell code-cell hero-cell" data-animate>
+      <div class="cell-head"><span class="cell-tag">In [1]:</span></div>
+      <pre class="code">import numpy as np
+
+prices = np.array([120000, 89000, 45000])
+print(prices * 0.9)</pre>
+      <div class="cell-out" hidden>
+        <span class="cell-tag">Out[1]:</span>
+        <pre>[108000.  80100.  40500.]</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>کتابخانه (ماژول) چیست؟</h2>
+    <p>کتابخانه مجموعه‌ای از کدهای آماده است که با <code>import</code> وارد برنامه می‌شود تا نیازی به نوشتن دوباره‌ی آن‌ها نباشد.</p>
+    <div class="table-wrap">
+      <table class="dtable">
+        <thead><tr><th>دستور</th><th>کاربرد</th></tr></thead>
+        <tbody>
+          <tr><td>import sys</td><td>وارد کردن کل ماژول</td></tr>
+          <tr><td>import pandas as pd</td><td>وارد کردن با نام مستعار (خلاصه‌تر)</td></tr>
+          <tr><td>from sys import version</td><td>وارد کردن فقط یک بخش خاص</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>نصب و مدیریت کتابخانه‌ها</h2>
+    <p>در محیط Anaconda، دو ابزار برای نصب کتابخانه در دسترس است: <strong>pip</strong> (استاندارد پایتون) و <strong>conda</strong> (مخصوص Anaconda). هر دو را می‌توان در Anaconda Prompt یا ترمینال اجرا کرد.</p>
+    <div class="table-wrap">
+      <table class="dtable">
+        <thead><tr><th>عملیات</th><th>با pip</th><th>با conda</th></tr></thead>
+        <tbody>
+          <tr><td>نصب پکیج</td><td>pip install pandas</td><td>conda install pandas</td></tr>
+          <tr><td>لیست پکیج‌های نصب‌شده</td><td>pip list</td><td>conda list</td></tr>
+          <tr><td>مشاهده‌ی جزئیات پکیج</td><td>pip show pandas</td><td>conda list pandas</td></tr>
+          <tr><td>حذف پکیج</td><td>pip uninstall pandas</td><td>conda remove pandas</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <aside class="note">💡 پکیج‌های پایتون معمولاً از مخزن <strong>PyPI</strong> (برای pip) یا مخزن <strong>Anaconda</strong> و <strong>conda-forge</strong> (برای conda) دانلود می‌شوند.</aside>
+  </section>
+
+  <section class="prose">
+    <h2>چرا NumPy؟</h2>
+    <p>لیست‌های پایتون برای کارهای عمومی خوب‌اند، اما برای محاسبات عددی روی داده‌های بزرگ کند هستند. <strong>NumPy</strong> یک ساختار به نام «آرایه» (array) معرفی می‌کند که محاسبات را روی کل مجموعه‌ی داده، یک‌جا و بسیار سریع انجام می‌دهد — دقیقاً همان‌طور که در نمونه‌ی بالا دیدید: ضرب کل لیست قیمت‌ها در ۰.۹ فقط با یک خط.</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [2]:</span></div>
+      <pre class="code">import numpy as np
+
+grades = np.array([18, 15, 19, 12, 20])
+
+print("میانگین:", grades.mean())
+print("بیشترین:", grades.max())
+print("شکل آرایه:", grades.shape)</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[2]:</span>
+        <pre>میانگین: 16.8
+بیشترین: 20
+شکل آرایه: (5,)</pre>
+      </div>
+    </div>
+    <p style="margin-top:16px">آرایه‌های NumPy همانند لیست‌ها ایندکس‌گذاری و برش می‌شوند، اما علاوه بر آن می‌توانند دوبعدی (مثل یک جدول یا ماتریس) هم باشند — چیزی که در Pandas، در بخش بعد، پایه‌ی کار با جدول داده خواهد بود.</p>
+  </section>
+
+  <section class="wrapup">
+    <h2>جمع‌بندی این بخش</h2>
+    <ul class="recap">
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>تفاوت pip و conda برای نصب کتابخانه را دیدیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>با NumPy و آرایه‌های آن کار کردیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>محاسبات برداری سریع‌تر از لیست معمولی را تجربه کردیم</li>
+    </ul>
+    <div class="next-box">
+      <p class="next-label">بخش بعد</p>
+      <h3>آشنایی با Pandas و DataFrame</h3>
+      <ul>
+        <li>خواندن فایل CSV</li>
+        <li>DataFrame و عملیات پایه روی آن</li>
+        <li>فیلتر، تحلیل و ذخیره‌ی داده</li>
+      </ul>
+    </div>
+    <div class="nav-buttons">
+      <a class="btn" href="s2-p1-collections-functions.html"><svg class="icon icon-flip"><use href="#i-arrow"></use></svg> بخش قبل</a>
+      <a class="btn btn-primary" href="s2-p3-pandas-basics.html">بخش بعد <svg class="icon"><use href="#i-arrow"></use></svg></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="progress-dots">
+    <span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span></span><span></span><span></span><span></span>
+  </div>
+  <p>پایتون برای علم داده · جلسه ۲ از ۳ · بخش ۵ از ۹</p>
+</footer>
+
+</body>
+</html>

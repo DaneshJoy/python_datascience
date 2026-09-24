@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جلسه ۱ · بخش ۱ — مقدمه و راه‌اندازی پایتون</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+<defs>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.7A8.3 8.3 0 1 1 9.3 3.8a6.7 6.7 0 0 0 10.9 10.9z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V11M10.5 20V5M17 20v-7"/><path d="M3 20h18"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9.5 3h5M10.2 3v5.6l-5 8.7A2 2 0 0 0 7 20.5h10a2 2 0 0 0 1.8-2.9l-5-8.7V3"/><path d="M8 15.5h8"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.1"/><path d="M12 3.2v2.5M12 18.3v2.5M20.8 12h-2.5M5.7 12H3.2M18.5 5.5l-1.8 1.8M7.3 16.7l-1.8 1.8M18.5 18.5l-1.8-1.8M7.3 7.3 5.5 5.5"/></symbol>
+  <symbol id="i-net" viewBox="0 0 24 24"><circle cx="6" cy="6.5" r="2.3"/><circle cx="18" cy="6.5" r="2.3"/><circle cx="12" cy="18" r="2.3"/><path d="M8 7.6 10.6 16M16 7.6 13.4 16M8.3 6.5h7.4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.8 9 17.3 19.5 6.8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+</defs>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="brand-mark">&gt;_</span><span>پایتون برای علم داده</span></div>
+    <div class="topbar-meta">
+      <span class="pill">جلسه ۱</span>
+      <span class="pill pill-accent">بخش ۱ از ۹</span>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="تغییر تم روشن و تیره">
+      <svg class="icon icon-sun"><use href="#i-sun"></use></svg>
+      <svg class="icon icon-moon"><use href="#i-moon"></use></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">دوره‌ی مقدماتی پایتون برای علم داده</p>
+    <h1>به دنیای پایتون خوش آمدید</h1>
+    <p class="hero-sub">در این بخش با پایتون آشنا می‌شویم، آن را روی سیستم نصب می‌کنیم و محیط‌های مختلف کدنویسی را می‌شناسیم؛ تا برای نوشتن اولین خط کد آماده باشیم.</p>
+    <div class="hero-meta">
+      <span class="chip">⏱ حدود ۶۰ دقیقه</span>
+      <span class="chip">🎯 بدون نیاز به پیش‌زمینه</span>
+    </div>
+
+    <div class="cell code-cell hero-cell" data-animate>
+      <div class="cell-head"><span class="cell-tag">In [1]:</span></div>
+      <pre class="code">print("سلام! 👋")
+print("به دوره‌ی پایتون خوش اومدی 🐍")</pre>
+      <div class="cell-out" hidden>
+        <span class="cell-tag">Out[1]:</span>
+        <pre>سلام! 👋
+به دوره‌ی پایتون خوش اومدی 🐍</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="roadmap">
+    <h2>نقشه‌ی راه دوره</h2>
+    <p class="section-lead">دوره در ۳ جلسه و ۹ بخش یک‌ساعته پیش می‌رود؛ همین الان در نقطه‌ی شروع هستیم.</p>
+    <div class="roadmap-grid">
+      <div class="roadmap-session">
+        <h3>جلسه ۱ — مبانی پایتون</h3>
+        <ul>
+          <li class="current"><span class="dot"></span>مقدمه، نصب و محیط‌های کدنویسی</li>
+          <li><span class="dot"></span>متغیرها، انواع داده و عملگرها</li>
+          <li><span class="dot"></span>شرط‌ها، حلقه‌ها و پروژه‌ی BMI</li>
+        </ul>
+      </div>
+      <div class="roadmap-session">
+        <h3>جلسه ۲ — ساختار داده و کتابخانه‌ها</h3>
+        <ul>
+          <li><span class="dot"></span>لیست، دیکشنری و توابع</li>
+          <li><span class="dot"></span>نصب کتابخانه‌ها و NumPy</li>
+          <li><span class="dot"></span>آشنایی با Pandas</li>
+        </ul>
+      </div>
+      <div class="roadmap-session">
+        <h3>جلسه ۳ — تحلیل و نمایش داده</h3>
+        <ul>
+          <li><span class="dot"></span>پردازش فایل CSV و پروژه‌ی تحلیل</li>
+          <li><span class="dot"></span>رسم نمودار با Matplotlib</li>
+          <li><span class="dot"></span>پروژه‌ی پایانی و جمع‌بندی</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>چرا پایتون؟</h2>
+    <p>پایتون یکی از ساده‌ترین و در عین حال قدرتمندترین زبان‌های برنامه‌نویسی دنیاست. نحو آن به زبان انسانی نزدیک است، همین باعث می‌شود یادگیری‌اش برای تازه‌کارها آسان باشد، بدون آنکه از قدرتش برای پروژه‌های جدی کم شود.</p>
+    <p>پایتون در سال ۱۹۹۱ توسط <strong>گیدو ون روسوم</strong> ساخته شد و امروز یکی از پراستفاده‌ترین زبان‌ها در تحلیل داده، هوش مصنوعی، توسعه‌ی وب و اتوماسیون است — با یک جامعه‌ی بزرگ که برای تقریباً هر نیازی، کتابخانه‌ای آماده ساخته‌اند.</p>
+    <aside class="note">🎭 نکته: نام «پایتون» از گروه کمدی بریتانیایی <em>Monty Python</em> گرفته شده، نه از خزنده‌ی پیتون! گیدو هنگام نوشتن اولین نسخه، طرفدار این گروه بود.</aside>
+  </section>
+
+  <section class="prose">
+    <h2>پایتون در دنیای داده</h2>
+    <p class="section-lead">در دنیای داده، افراد مختلف با نقش‌های متفاوت، از پایتون استفاده می‌کنند:</p>
+    <div class="role-grid">
+      <article class="role-card">
+        <svg class="icon"><use href="#i-chart"></use></svg>
+        <h3>تحلیل‌گر داده</h3>
+        <p>با داده‌های پاک‌شده کار می‌کند و برای تصمیم‌گیری‌های کسب‌وکار، بینش استخراج می‌کند.</p>
+        <p class="tools">ابزار: Excel، SQL، پایتون</p>
+      </article>
+      <article class="role-card">
+        <svg class="icon"><use href="#i-flask"></use></svg>
+        <h3>دانشمند داده</h3>
+        <p>با یادگیری ماشین، مدل می‌سازد و آینده را پیش‌بینی می‌کند.</p>
+        <p class="tools">ابزار: پایتون، Pandas، مدل‌های ML</p>
+      </article>
+      <article class="role-card">
+        <svg class="icon"><use href="#i-gear"></use></svg>
+        <h3>مهندس داده</h3>
+        <p>خط‌لوله‌ی داده‌ی خام را می‌سازد و نگه می‌دارد تا بقیه بتوانند رویش کار کنند.</p>
+        <p class="tools">ابزار: SQL، پایتون، پایگاه‌داده</p>
+      </article>
+      <article class="role-card">
+        <svg class="icon"><use href="#i-net"></use></svg>
+        <h3>مهندس یادگیری ماشین</h3>
+        <p>مدل‌های ساخته‌شده را در محصول واقعی مستقر و بهینه می‌کند.</p>
+        <p class="tools">ابزار: پایتون، ابزارهای MLOps</p>
+      </article>
+    </div>
+    <p class="callout-line">نقطه‌ی مشترک همه‌شون؟ <strong>پایتون 🐍</strong></p>
+  </section>
+
+  <section class="prose">
+    <h2>ویژگی‌های کلیدی پایتون</h2>
+    <div class="feature-grid">
+      <div class="feature"><svg class="icon"><use href="#i-check"></use></svg>
+        <div><h3>رایگان و متن‌باز</h3><p>هر کسی می‌تواند رایگان از آن استفاده و آن را توسعه دهد.</p></div></div>
+      <div class="feature"><svg class="icon"><use href="#i-check"></use></svg>
+        <div><h3>سطح‌بالا و خوانا</h3><p>نحوی ساده و نزدیک به زبان انسانی دارد.</p></div></div>
+      <div class="feature"><svg class="icon"><use href="#i-check"></use></svg>
+        <div><h3>تفسیری (Interpreted)</h3><p>بدون نیاز به کامپایل جداگانه، خط‌به‌خط اجرا می‌شود.</p></div></div>
+      <div class="feature"><svg class="icon"><use href="#i-check"></use></svg>
+        <div><h3>چندسکویی</h3><p>روی ویندوز، مک و لینوکس یکسان اجرا می‌شود.</p></div></div>
+      <div class="feature"><svg class="icon"><use href="#i-check"></use></svg>
+        <div><h3>کتابخانه‌ی استاندارد بزرگ</h3><p>برای اغلب نیازها، ابزار آماده در دل خودش دارد.</p></div></div>
+      <div class="feature"><svg class="icon"><use href="#i-check"></use></svg>
+        <div><h3>توسعه‌پذیر</h3><p>به C/C++ و بسیاری ابزارهای دیگر متصل می‌شود.</p></div></div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>نصب و راه‌اندازی</h2>
+    <p>برای شروع، به یک مفسر پایتون نیاز داریم. ساده‌ترین راه، استفاده از بسته‌ی <strong>Anaconda</strong> است که پایتون، مهم‌ترین کتابخانه‌ها و چند IDE را یکجا نصب می‌کند.</p>
+    <ol class="steps">
+      <li><span class="step-num">۱</span>
+        <div><h3>چرا Anaconda؟</h3><p>شامل پایتون، NumPy، Pandas، Jupyter، Spyder و صدها کتابخانه‌ی دیگر — با یک نصب.</p></div></li>
+      <li><span class="step-num">۲</span>
+        <div><h3>دانلود</h3><p>از سایت anaconda.com نسخه‌ی متناسب با سیستم‌عامل خود را دانلود کنید (حدود ۹۰۰ مگابایت).</p></div></li>
+      <li><span class="step-num">۳</span>
+        <div><h3>نصب</h3><p>گزینه‌ی «Just Me» را انتخاب کنید. تیک «Add Anaconda to PATH» اختیاری است، اما برای کار با خط‌فرمان مفید خواهد بود.</p></div></li>
+      <li><span class="step-num">۴</span>
+        <div><h3>بررسی نصب</h3><p>در Anaconda Prompt دستور <code>python --version</code> را بزنید؛ دیدن شماره‌ی نسخه یعنی همه‌چیز آماده است.</p></div></li>
+    </ol>
+    <div class="warn">⚠️ همیشه پایتون نسخه‌ی ۳ (Python 3) را نصب کنید. نسخه‌ی ۲ از سال ۲۰۲۰ دیگر پشتیبانی نمی‌شود.</div>
+  </section>
+
+  <section class="prose">
+    <h2>محیط‌های کدنویسی (IDE)</h2>
+    <p class="section-lead">کد پایتون را می‌توان در محیط‌های مختلفی نوشت؛ در این دوره از دو محیط زیر استفاده می‌کنیم، ولی بد نیست بقیه‌ی گزینه‌ها را هم بشناسید:</p>
+    <div class="ide-grid">
+      <article class="ide-card featured"><span class="badge">پیشنهادی این دوره</span>
+        <h3>Jupyter Notebook</h3>
+        <p>اجرای کد در سلول‌های مجزا، همراه با متن و نمودار — بهترین انتخاب برای یادگیری و علم داده. همراه Anaconda نصب می‌شود.</p></article>
+      <article class="ide-card featured"><span class="badge">پیشنهادی این دوره</span>
+        <h3>Spyder</h3>
+        <p>محیطی شبیه MATLAB با پنجره‌ی متغیرها؛ همراه Anaconda نصب می‌شود و برای نوشتن و اجرای اسکریپت‌های کامل مناسب است.</p></article>
+      <article class="ide-card">
+        <h3>Google Colab</h3>
+        <p>نسخه‌ی آنلاین Jupyter در مرورگر، بدون نیاز به نصب؛ گزینه‌ای عالی اگر سیستم شما ضعیف است.</p></article>
+      <article class="ide-card">
+        <h3>VS Code</h3>
+        <p>ویرایشگر سبک و قدرتمند با هزاران افزونه؛ انتخاب رایج توسعه‌دهندگان حرفه‌ای.</p></article>
+      <article class="ide-card">
+        <h3>PyCharm</h3>
+        <p>محیط توسعه‌ی حرفه‌ای مخصوص پایتون با ابزارهای قدرتمند دیباگ و مدیریت پروژه‌های بزرگ.</p></article>
+      <article class="ide-card">
+        <h3>Cursor</h3>
+        <p>بر پایه‌ی VS Code، با هوش مصنوعی داخلی برای کمک به نوشتن و اصلاح کد.</p></article>
+    </div>
+  </section>
+
+  <section class="wrapup">
+    <h2>جمع‌بندی این بخش</h2>
+    <ul class="recap">
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>با پایتون و کاربردهایش در دنیای داده آشنا شدیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>ویژگی‌های کلیدی‌ای که پایتون را محبوب کرده‌اند را دیدیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>پایتون را با Anaconda نصب کردیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>محیط‌های کدنویسی مختلف را شناختیم و Jupyter و Spyder را برای این دوره انتخاب کردیم</li>
+    </ul>
+    <div class="next-box">
+      <p class="next-label">بخش بعد</p>
+      <h3>متغیرها، انواع داده و عملگرها</h3>
+      <ul>
+        <li>تعریف و نام‌گذاری متغیرها</li>
+        <li>انواع داده: عدد، رشته، بولین و ...</li>
+        <li>عملگرهای محاسباتی و مقایسه‌ای</li>
+      </ul>
+    </div>
+    <div class="nav-buttons">
+      <span></span>
+      <a class="btn btn-primary" href="s1-p2-variables-types.html">بخش بعد <svg class="icon"><use href="#i-arrow"></use></svg></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="progress-dots">
+    <span class="done"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <p>پایتون برای علم داده · جلسه ۱ از ۳ · بخش ۱ از ۹</p>
+</footer>
+
+</body>
+</html>

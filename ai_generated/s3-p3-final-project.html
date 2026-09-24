@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جلسه ۳ · بخش ۳ — پروژه‌ی پایانی و جمع‌بندی دوره</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+<defs>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.7A8.3 8.3 0 1 1 9.3 3.8a6.7 6.7 0 0 0 10.9 10.9z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.8 9 17.3 19.5 6.8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+</defs>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="brand-mark">&gt;_</span><span>پایتون برای علم داده</span></div>
+    <div class="topbar-meta">
+      <span class="pill">جلسه ۳</span>
+      <span class="pill pill-accent">بخش ۹ از ۹</span>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="تغییر تم روشن و تیره">
+      <svg class="icon icon-sun"><use href="#i-sun"></use></svg>
+      <svg class="icon icon-moon"><use href="#i-moon"></use></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">دوره‌ی مقدماتی پایتون برای علم داده</p>
+    <h1>پروژه‌ی پایانی و جمع‌بندی</h1>
+    <p class="hero-sub">به آخرین بخش دوره رسیدیم! یک پروژه‌ی پایانی ترکیبی، یک چک‌لیست کامل از هر چیزی که یاد گرفتیم، و مسیر ادامه‌ی یادگیری در پیش داریم.</p>
+    <div class="hero-meta">
+      <span class="chip">⏱ حدود ۶۰ دقیقه</span>
+      <span class="chip">🏁 پروژه‌ی پایانی</span>
+    </div>
+
+    <div class="cell code-cell hero-cell" data-animate>
+      <div class="cell-head"><span class="cell-tag">In [1]:</span></div>
+      <pre class="code">print("🎉 تبریک! مسیر مقدماتی پایتون رو تموم کردی.")
+print("حالا وقتشه با داده‌های واقعی خودت کار کنی 🚀")</pre>
+      <div class="cell-out" hidden>
+        <span class="cell-tag">Out[1]:</span>
+        <pre>🎉 تبریک! مسیر مقدماتی پایتون رو تموم کردی.
+حالا وقتشه با داده‌های واقعی خودت کار کنی 🚀</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>پروژه‌ی پایانی: از داده تا نمودار</h2>
+    <p>در این پروژه، یک فایل فروش ماهانه را می‌خوانیم، سودآورترین ماه‌ها را پیدا می‌کنیم و نتیجه را رسم می‌کنیم — دقیقاً چیزی که هر سه جلسه‌ی دوره را در چند خط کنار هم می‌گذارد:</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [2]:</span></div>
+      <pre class="code">import pandas as pd
+import matplotlib.pyplot as plt
+
+sales = pd.read_csv("monthly_sales.csv")
+sales["profit"] = sales["revenue"] - sales["cost"]
+
+top = sales.sort_values("profit", ascending=False).head(3)
+print(top[["month", "profit"]])
+
+top.plot(x="month", y="profit", kind="bar", color="#1F4E79")
+plt.title("پرسودترین ماه‌ها")
+plt.savefig("top_months.png")</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[2]:</span>
+        <pre>    month  profit
+0     تیر   18400
+1 اردیبهشت   15200
+2 فروردین   11800</pre>
+      </div>
+    </div>
+    <aside class="note">✅ خواندن فایل (Pandas) + ساخت ستون جدید (عملگرها) + مرتب‌سازی و فیلتر (DataFrame) + رسم نمودار (Matplotlib) — همه در یک پروژه.</aside>
+  </section>
+
+  <section class="roadmap">
+    <h2>چک‌لیست دوره</h2>
+    <p class="section-lead">این‌ها را در ۹ بخش این دوره یاد گرفتی:</p>
+    <div class="roadmap-grid">
+      <div class="roadmap-session">
+        <h3>جلسه ۱ — مبانی پایتون</h3>
+        <ul>
+          <li class="finished"><span class="dot"></span>مقدمه، نصب و محیط‌های کدنویسی</li>
+          <li class="finished"><span class="dot"></span>متغیرها، انواع داده و عملگرها</li>
+          <li class="finished"><span class="dot"></span>شرط‌ها، حلقه‌ها و پروژه‌ی BMI</li>
+        </ul>
+      </div>
+      <div class="roadmap-session">
+        <h3>جلسه ۲ — ساختار داده و کتابخانه‌ها</h3>
+        <ul>
+          <li class="finished"><span class="dot"></span>لیست، دیکشنری و توابع</li>
+          <li class="finished"><span class="dot"></span>نصب کتابخانه‌ها و NumPy</li>
+          <li class="finished"><span class="dot"></span>آشنایی با Pandas</li>
+        </ul>
+      </div>
+      <div class="roadmap-session">
+        <h3>جلسه ۳ — تحلیل و نمایش داده</h3>
+        <ul>
+          <li class="finished"><span class="dot"></span>پردازش فایل CSV و پروژه‌ی تحلیل</li>
+          <li class="finished"><span class="dot"></span>رسم نمودار با Matplotlib</li>
+          <li class="finished"><span class="dot"></span>پروژه‌ی پایانی و جمع‌بندی</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>مسیر ادامه‌ی یادگیری</h2>
+    <p class="section-lead">این دوره فقط شروع راه بود. برای ادامه، این مسیرها پیشنهاد می‌شود:</p>
+    <div class="card-grid">
+      <article class="info-card">
+        <h3>یادگیری ماشین با Scikit-learn</h3>
+        <p>گام بعدی طبیعی بعد از Pandas؛ ساخت اولین مدل پیش‌بینی با داده‌های خودت.</p>
+      </article>
+      <article class="info-card">
+        <h3>SQL و پایگاه‌داده</h3>
+        <p>اغلب داده‌های واقعی در دیتابیس‌اند، نه فایل CSV؛ SQL برای رسیدن به آن‌ها ضروری است.</p>
+      </article>
+      <article class="info-card">
+        <h3>Git و GitHub</h3>
+        <p>برای نگه‌داری نسخه‌های کد و اشتراک‌گذاری پروژه‌ها، ابزار استاندارد صنعت.</p>
+      </article>
+      <article class="info-card">
+        <h3>تمرین با پروژه‌های واقعی</h3>
+        <p>سایت‌هایی مثل Kaggle داده‌های واقعی رایگان برای تمرین در اختیارت می‌گذارند.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrapup">
+    <h2>حرف آخر</h2>
+    <p>یاد گرفتن برنامه‌نویسی از روی تماشا اتفاق نمی‌افتد؛ از روی نوشتن و خراب‌کاری و دوباره درست کردن کد اتفاق می‌افتد. حالا که پایه‌ها را داری، بهترین کار این است که یک داده‌ی واقعی — حتی داده‌های خودت — را برداری و همین مسیر را از اول تا آخر روی آن پیاده کنی. موفق باشی 🐍</p>
+    <div class="nav-buttons">
+      <a class="btn" href="s3-p2-matplotlib.html"><svg class="icon icon-flip"><use href="#i-arrow"></use></svg> بخش قبل</a>
+      <a class="btn btn-primary" href="s1-p1-intro-setup.html">مرور از بخش ۱</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="progress-dots">
+    <span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span>
+  </div>
+  <p>پایتون برای علم داده · جلسه ۳ از ۳ · بخش ۹ از ۹</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>بخش جایزه — گرفتن داده از اینترنت با requests</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+<defs>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.7A8.3 8.3 0 1 1 9.3 3.8a6.7 6.7 0 0 0 10.9 10.9z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.8 9 17.3 19.5 6.8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+</defs>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="brand-mark">&gt;_</span><span>پایتون برای علم داده</span></div>
+    <div class="topbar-meta">
+      <span class="pill pill-accent">🎁 بخش جایزه</span>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="تغییر تم روشن و تیره">
+      <svg class="icon icon-sun"><use href="#i-sun"></use></svg>
+      <svg class="icon icon-moon"><use href="#i-moon"></use></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">دوره‌ی مقدماتی پایتون برای علم داده</p>
+    <h1>گرفتن داده از اینترنت با requests</h1>
+    <p class="hero-sub">تا اینجا از فایل CSV داده خواندیم؛ اما خیلی از داده‌های واقعی (مثل قیمت ارز یا آب‌وهوا) از یک API روی اینترنت می‌آیند. این بخش کوتاه و اختیاری، خارج از ۹ بخش اصلی دوره، همین را نشان می‌دهد.</p>
+    <div class="hero-meta">
+      <span class="chip">⏱ حدود ۲۰ دقیقه</span>
+      <span class="chip">🌐 requests + JSON</span>
+    </div>
+
+    <div class="cell code-cell hero-cell" data-animate>
+      <div class="cell-head"><span class="cell-tag">In [1]:</span></div>
+      <pre class="code">import requests
+
+url = "https://api.coingecko.com/api/v3/simple/price"
+response = requests.get(url, params={"ids": "bitcoin", "vs_currencies": "usd"})
+
+data = response.json()
+print(data)</pre>
+      <div class="cell-out" hidden>
+        <span class="cell-tag">Out[1]:</span>
+        <pre>{'bitcoin': {'usd': 61234}}</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>نصب</h2>
+    <div class="table-wrap">
+      <table class="dtable">
+        <thead><tr><th>با pip</th><th>با conda</th></tr></thead>
+        <tbody><tr><td>pip install requests</td><td>conda install requests</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>یک درخواست ساده، قدم‌به‌قدم</h2>
+    <p><code>requests.get(url)</code> یک درخواست به سرور می‌فرستد؛ <code>response.json()</code> پاسخ (که معمولاً به فرمت JSON است) را به یک دیکشنری یا لیست پایتون تبدیل می‌کند — دقیقاً همان ساختارهایی که در جلسه‌ی دوم یاد گرفتیم.</p>
+  </section>
+
+  <section class="prose">
+    <h2>مدیریت خطا با try/except</h2>
+    <p>اینترنت همیشه در دسترس نیست و سرورها گاهی خطا می‌دهند؛ برای اینکه برنامه با یک خطای شبکه کاملاً متوقف نشود، درخواست را داخل try/except قرار می‌دهیم:</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [2]:</span></div>
+      <pre class="code">try:
+    response = requests.get(url, params={"ids": "bitcoin", "vs_currencies": "usd"}, timeout=10)
+    response.raise_for_status()   # اگر کد وضعیت خطا بود (مثل 404)، خطا صادر می‌کند
+    data = response.json()
+except requests.exceptions.RequestException as e:
+    print("خطا در دریافت داده:", e)</pre>
+    </div>
+    <aside class="note">💡 <code>timeout=10</code> یعنی اگر سرور تا ۱۰ ثانیه پاسخ نداد، به‌جای معطل‌ماندن، خطا صادر شود.</aside>
+  </section>
+
+  <section class="wrapup">
+    <h2>مرحله‌ی بعد</h2>
+    <p>با ترکیب requests، pandas و Matplotlib می‌توان تاریخچه‌ی قیمت را هم گرفت، در قالب جدول تحلیل کرد و نمودار روند را رسم کرد — نسخه‌ی کامل همین ایده، با ذخیره‌ی خودکار خروجی، در پروژه‌ی جایزه‌ی دوره آماده است.</p>
+    <div class="nav-buttons">
+      <a class="btn" href="s3-p3-final-project.html"><svg class="icon icon-flip"><use href="#i-arrow"></use></svg> بازگشت به بخش ۹</a>
+      <a class="btn btn-primary" href="projects/05_bonus_crypto_prices.py">دانلود کد کامل پروژه</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>پایتون برای علم داده · بخش جایزه (خارج از ۹ بخش اصلی دوره)</p>
+</footer>
+
+</body>
+</html>

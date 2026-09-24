@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جلسه ۲ · بخش ۳ — آشنایی با Pandas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+<defs>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.7A8.3 8.3 0 1 1 9.3 3.8a6.7 6.7 0 0 0 10.9 10.9z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.8 9 17.3 19.5 6.8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+</defs>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="brand-mark">&gt;_</span><span>پایتون برای علم داده</span></div>
+    <div class="topbar-meta">
+      <span class="pill">جلسه ۲</span>
+      <span class="pill pill-accent">بخش ۶ از ۹</span>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="تغییر تم روشن و تیره">
+      <svg class="icon icon-sun"><use href="#i-sun"></use></svg>
+      <svg class="icon icon-moon"><use href="#i-moon"></use></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">دوره‌ی مقدماتی پایتون برای علم داده</p>
+    <h1>آشنایی با Pandas</h1>
+    <p class="hero-sub">در بخش قبل NumPy را دیدیم؛ در این بخش با Pandas — مهم‌ترین ابزار پایتون برای کار با جدول داده — آشنا می‌شویم؛ همان ابزاری که در پروژه‌های جلسه‌ی سوم محور کارمان خواهد بود.</p>
+    <div class="hero-meta">
+      <span class="chip">⏱ حدود ۶۰ دقیقه</span>
+      <span class="chip">🐼 Pandas</span>
+    </div>
+
+    <div class="cell code-cell hero-cell" data-animate>
+      <div class="cell-head"><span class="cell-tag">In [1]:</span></div>
+      <pre class="code">import pandas as pd
+
+data = pd.read_csv("weather_data.csv")
+print(data.head(3))</pre>
+      <div class="cell-out" hidden>
+        <span class="cell-tag">Out[1]:</span>
+        <pre>        day  temp condition
+0    Monday    12     Sunny
+1   Tuesday    14      Rain
+2 Wednesday    15      Rain</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>سه روش خواندن فایل CSV</h2>
+    <div class="table-wrap">
+      <table class="dtable">
+        <thead><tr><th>روش</th><th>نوع خروجی</th><th>مناسب برای</th></tr></thead>
+        <tbody>
+          <tr><td>data_file.readlines()</td><td>List</td><td>خواندن ساده‌ی متن</td></tr>
+          <tr><td>csv.reader(data_file)</td><td>_csv.reader</td><td>پردازش سطر به سطر</td></tr>
+          <tr><td>pandas.read_csv(...)</td><td>DataFrame</td><td><span class="mark-ok">✓ بهترین گزینه برای تحلیل داده</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>DataFrame چیست؟</h2>
+    <p>DataFrame همان چیزی است که در بالا با <code>read_csv</code> ساختیم: یک جدول با سطر و ستون، دقیقاً مثل یک صفحه‌ی اکسل — با این تفاوت که ده‌ها تابع آماده برای پردازش دارد.</p>
+    <div class="table-wrap">
+      <table class="dtable">
+        <thead><tr><th>day</th><th>temp</th><th>condition</th></tr></thead>
+        <tbody>
+          <tr><td>Monday</td><td>12</td><td>Sunny</td></tr>
+          <tr><td>Tuesday</td><td>14</td><td>Rain</td></tr>
+          <tr><td>Wednesday</td><td>15</td><td>Rain</td></tr>
+          <tr><td>Thursday</td><td>14</td><td>Cloudy</td></tr>
+          <tr><td>Friday</td><td>21</td><td>Sunny</td></tr>
+          <tr><td>Saturday</td><td>22</td><td>Sunny</td></tr>
+          <tr><td>Sunday</td><td>24</td><td>Sunny</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>عملیات پایه روی DataFrame</h2>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [2]:</span></div>
+      <pre class="code">print("میانگین دما:", data["temp"].mean())
+print("روزهای آفتابی:", len(data[data["condition"] == "Sunny"]))</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[2]:</span>
+        <pre>میانگین دما: 17.43
+روزهای آفتابی: 3</pre>
+      </div>
+    </div>
+    <p style="margin-top:16px">توابع پرکاربرد دیگر: <code>data.shape</code> (ابعاد جدول)، <code>data.dtypes</code> (نوع هر ستون) و <code>data.describe()</code> (خلاصه‌ی آماری همه‌ی ستون‌های عددی).</p>
+  </section>
+
+  <section class="prose">
+    <h2>ساخت DataFrame از صفر</h2>
+    <p>لازم نیست همیشه از فایل بخوانیم؛ می‌توانیم از یک دیکشنری هم مستقیماً DataFrame بسازیم.</p>
+    <div class="cell code-cell">
+      <div class="cell-head"><span class="cell-tag">In [3]:</span></div>
+      <pre class="code">data_dict = {"نام": ["آرش", "نگار"], "نمره": [18, 19]}
+df = pd.DataFrame(data_dict)
+print(df)</pre>
+      <div class="cell-out">
+        <span class="cell-tag">Out[3]:</span>
+        <pre>   نام  نمره
+0  آرش    18
+1 نگار    19</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>ذخیره‌سازی نتایج</h2>
+    <div class="table-wrap">
+      <table class="dtable">
+        <thead><tr><th>دستور</th><th>فرمت خروجی</th></tr></thead>
+        <tbody>
+          <tr><td>df.to_csv("data.csv")</td><td>CSV</td></tr>
+          <tr><td>df.to_excel("data.xlsx")</td><td>Excel</td></tr>
+          <tr><td>df.to_json("data.json")</td><td>JSON</td></tr>
+          <tr><td>df.to_html("data.html")</td><td>HTML</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="wrapup">
+    <h2>جمع‌بندی این بخش</h2>
+    <ul class="recap">
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>سه روش خواندن فایل CSV را مقایسه کردیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>با DataFrame و عملیات پایه‌ی Pandas کار کردیم</li>
+      <li><svg class="icon icon-sm"><use href="#i-check"></use></svg>داده را فیلتر، تحلیل و در چند فرمت مختلف ذخیره کردیم</li>
+    </ul>
+    <span class="end-badge">🎉 پایان جلسه‌ی ۲</span>
+    <div class="next-box" style="margin-top:20px">
+      <p class="next-label">بخش بعد — شروع جلسه‌ی ۳</p>
+      <h3>پردازش CSV و پروژه‌ی تحلیل داده</h3>
+      <ul>
+        <li>یک پروژه‌ی کامل: از خواندن فایل تا نتیجه‌ی نهایی</li>
+        <li>تبدیل واحد و محاسبه‌ی ستون جدید</li>
+        <li>ذخیره‌ی خروجی در چند فرمت</li>
+      </ul>
+    </div>
+    <div class="nav-buttons">
+      <a class="btn" href="s2-p2-packages-numpy.html"><svg class="icon icon-flip"><use href="#i-arrow"></use></svg> بخش قبل</a>
+      <a class="btn btn-primary" href="s3-p1-csv-project.html">بخش بعد <svg class="icon"><use href="#i-arrow"></use></svg></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="progress-dots">
+    <span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span><span></span><span></span><span></span>
+  </div>
+  <p>پایتون برای علم داده · جلسه ۲ از ۳ · بخش ۶ از ۹</p>
+</footer>
+
+</body>
+</html>
